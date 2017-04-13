@@ -1,0 +1,534 @@
+tcp:
+	3432478 packets sent
+		1177831 data packets (930608126 bytes)
+		67868 data packets (37407641 bytes) retransmitted
+		0 resend initiated by MTU discovery
+		1675813 ack-only packets (3557 delayed)
+		0 URG only packet
+		0 window probe packet
+		421517 window update packets
+		91010 control packets
+		0 data packet sent after flow control
+		3441095 checksummed in software
+			2104909 segments (931033140 bytes) over IPv4
+			1336186 segments (123130006 bytes) over IPv6
+	3905995 packets received
+		677052 acks (for 930070376 bytes)
+		145746 duplicate acks
+		0 ack for unsent data
+		3063838 packets (3354779697 byte) received in-sequence
+		24572 completely duplicate packets (10812190 bytes)
+		679 old duplicate packets
+		0 received packet dropped due to low memory
+		15 packets with some dup. data (11364 bytes duped)
+		93807 out-of-order packets (114672688 bytes)
+		0 packet (0 byte) of data after window
+		0 window probe
+		2923 window update packets
+		3681 packets received after close
+		17 bad resets
+		0 discarded for bad checksum
+		3827225 checksummed in software
+			1926389 segments (1799304795 bytes) over IPv4
+			1900836 segments (1830086193 bytes) over IPv6
+		0 discarded for bad header offset field
+		0 discarded because packet too short
+	37387 connection requests
+	216 connection accepts
+	0 bad connection attempt
+	0 listen queue overflow
+	32672 connections established (including accepts)
+	86841 connections closed (including 4756 drops)
+		2749 connections updated cached RTT on close
+		2749 connections updated cached RTT variance on close
+		1863 connections updated cached ssthresh on close
+	833 embryonic connections dropped
+	1360647 segments updated rtt (of 426231 attempts)
+	68417 retransmit timeouts
+		595 connections dropped by rexmit timeout
+		0 connection dropped after retransmitting FIN
+	0 persist timeout
+		0 connection dropped by persist timeout
+	66648 keepalive timeouts
+		65785 keepalive probes sent
+		586 connections dropped by keepalive
+	106308 correct ACK header predictions
+	2921605 correct data packet header predictions
+	9651 SACK recovery episodes
+	4222 segment rexmits in SACK recovery episodes
+	2260597 byte rexmits in SACK recovery episodes
+	60809 SACK options (SACK blocks) received
+	114692 SACK options (SACK blocks) sent
+	0 SACK scoreboard overflow
+	0 LRO coalesced packet
+		0 time LRO flow table was full
+		0 collision in LRO flow table
+		0 time LRO coalesced 2 packets
+		0 time LRO coalesced 3 or 4 packets
+		0 time LRO coalesced 5 or more packets
+	13086 limited transmits done
+	6287 early retransmits done
+	148 times cumulative ack advanced along with SACK
+	13120 probe timeouts
+		1651 times retransmit timeout triggered after probe
+		0 time probe packets were sent for an interface
+		0 time couldn't send probe packets for an interface
+		283 times fast recovery after tail loss
+		3203 times recovered last packet 
+		66 SACK based rescue retransmits
+	1891 client connections attempted to negotiate ECN
+		732 client connections successfully negotiated ECN
+		906 times graceful fallback to Non-ECN connection
+		1457 times lost ECN negotiating SYN, followed by retransmission
+		0 server connection attempted to negotiate ECN
+		0 server connection successfully negotiated ECN
+		0 time lost ECN negotiating SYN-ACK, followed by retransmission
+		0 time received congestion experienced (CE) notification
+		0 time CWR was sent in response to ECE
+		0 time sent ECE notification
+		0 connection received CE atleast once
+		0 connection received ECE atleast once
+		160 connections using ECN have seen packet loss but no CE
+		0 connection using ECN have seen packet loss and CE
+		0 connection using ECN received CE but no packet loss
+	67 times packet reordering was detected on a connection
+		455 times transmitted packets were reordered
+		3237 times fast recovery was delayed to handle reordering
+		455 times retransmission was avoided by delaying recovery
+		0 retransmission not needed 
+	16708 times DSACK option was sent
+		12683 times DSACK option was received
+		1542 times DSACK was disabled on a connection
+		4530 times recovered from bad retransmission using DSACK
+		771 times ignored DSACK due to ack loss
+		1 time ignored old DSACK options
+	395 times PMTU Blackhole detection, size reverted
+	543 connections were dropped after long sleep
+	0 time a TFO-cookie has been announced
+	0 SYN with data and a valid TFO-cookie have been received
+	0 SYN with TFO-cookie-request received
+	0 time an invalid TFO-cookie has been received
+	97 times we requested a TFO-cookie
+		4 times the peer announced a TFO-cookie
+	61 times we combined SYN with data and a TFO-cookie
+		51 times our SYN with data has been acknowledged
+	1 time a connection-attempt with TFO fell back to regular TCP
+	0 time a TFO-connection blackhole'd
+udp:
+	2836854 datagrams received
+		0 with incomplete header
+		0 with bad data length field
+		0 with bad checksum
+		1047467 with no checksum
+		1756676 checksummed in software
+			1049053 datagrams (305914476 bytes) over IPv4
+			707623 datagrams (158668579 bytes) over IPv6
+		4564 dropped due to no socket
+		46724 broadcast/multicast datagrams undelivered
+		0 time multicast source filter matched
+		538 dropped due to full socket buffers
+		0 not for hashed pcb
+		2785028 delivered
+	1073164 datagrams output
+		1073093 checksummed in software
+			1049181 datagrams (269869446 bytes) over IPv4
+			23912 datagrams (8288829 bytes) over IPv6
+ip:
+	5430563 total packets received
+		0 bad header checksum
+		5327912 headers (106560720 bytes) checksummed in software
+		0 with size smaller than minimum
+		0 with data size < data length
+		41487 with data size > data length
+			0 packet forced to software checksum
+		0 with ip length > max ip packet size
+		0 with header length < data size
+		0 with data length < header length
+		0 with bad options
+		0 with incorrect version number
+		77 fragments received
+			0 dropped (dup or out of space)
+			20 dropped after timeout
+			18 reassembled ok
+		4125239 packets for this host
+		2116 packets for unknown/unsupported protocol
+		0 packet forwarded (0 packet fast forwarded)
+		7 packets not forwardable
+		1282036 packets received for unknown multicast group
+		0 redirect sent
+		247796 input packets not chained due to collision
+		2194282 input packets processed in a chain
+		214 input packets unable to chain
+		275724 input packet chains processed with length greater than 2
+		113690 input packet chains processed with length greater than 4
+		2987256 input packets did not go through list processing path
+	3248574 packets sent from this host
+		1362 packets sent with fabricated ip header
+		0 output packet dropped due to no bufs, etc.
+		99 output packets discarded due to no route
+		76 output datagrams fragmented
+		152 fragments created
+		0 datagram that can't be fragmented
+		0 tunneling packet that can't find gif
+		0 datagram with bad address in header
+		0 packet dropped due to no bufs for control data
+		3158836 headers (63178444 bytes) checksummed in software
+icmp:
+	4346 calls to icmp_error
+	0 error not generated 'cuz old message was icmp
+	Output histogram:
+		echo reply: 1
+		destination unreachable: 4346
+	0 message with bad code fields
+	0 message < minimum length
+	0 bad checksum
+	0 message with bad length
+	0 multicast echo requests ignored
+	0 multicast timestamp requests ignored
+	Input histogram:
+		echo reply: 2
+		destination unreachable: 2132
+		routing redirect: 1
+		echo: 1
+		time exceeded: 1188
+	1 message response generated
+	ICMP address mask responses are disabled
+igmp:
+	98 messages received
+	0 message received with too few bytes
+	0 message received with wrong TTL
+	0 message received with bad checksum
+	98 V1/V2 membership queries received
+	0 V3 membership queries received
+	0 membership queries received with invalid field(s)
+	98 general queries received
+	0 group queries received
+	0 group-source queries received
+	0 group-source queries dropped
+	0 membership report received
+	0 membership report received with invalid field(s)
+	0 membership report received for groups to which we belong
+	0 V3 report received without Router Alert
+	470 membership reports sent
+ipsec:
+	0 inbound packet processed successfully
+	0 inbound packet violated process security policy
+	0 inbound packet with no SA available
+	0 invalid inbound packet
+	0 inbound packet failed due to insufficient memory
+	0 inbound packet failed getting SPI
+	0 inbound packet failed on AH replay check
+	0 inbound packet failed on ESP replay check
+	0 inbound packet considered authentic
+	0 inbound packet failed on authentication
+	0 outbound packet processed successfully
+	0 outbound packet violated process security policy
+	0 outbound packet with no SA available
+	0 invalid outbound packet
+	0 outbound packet failed due to insufficient memory
+	0 outbound packet with no route
+arp:
+	4082 ARP requests sent
+	1641 ARP replies sent
+	0 ARP announcement sent
+	8561 ARP requests received
+	2530 ARP replies received
+	11378 total ARP packets received
+	0 ARP conflict probe sent
+	0 invalid ARP resolve request
+	0 total packet dropped due to lack of memory
+	3333 total packets dropped due to no ARP entry
+	91 total packets dropped during ARP entry removal
+	0 ARP entry timed out
+	0 Duplicate IP seen
+mptcp:
+	0 data packet sent
+	0 data byte sent
+	0 data packet received
+	0 data byte received
+	0 packet with an invalid MPCAP option
+	0 packet with an invalid MPJOIN option
+	0 time primary subflow fell back to TCP
+	0 time secondary subflow fell back to TCP
+	0 DSS option drop
+	0 other invalid MPTCP option
+	0 time the MPTCP subflow window was reduced
+	0 bad DSS checksum
+	0 time received out of order data 
+	0 subflow switch
+	0 subflow switche due to advisory
+	0 subflow switche due to rtt
+	0 subflow switche due to rto
+	0 subflow switche due to peer
+	0 number of subflow probe
+ip6:
+	2819949 total packets received
+		0 with size smaller than minimum
+		0 with data size < data length
+		0 with data size > data length
+			0 packet forced to software checksum
+		0 with bad options
+		0 with incorrect version number
+		129 fragments received
+			0 dropped (dup or out of space)
+			4 dropped after timeout
+			0 exceeded limit
+			47 reassembled ok
+		2619035 packets for this host
+		0 packet forwarded
+		148663 packets not forwardable
+		0 redirect sent
+		148609 multicast packets which we don't join
+		0 packet whose headers are not continuous
+		0 tunneling packet that can't find gif
+		0 packet discarded due to too may headers
+		0 forward cache hit
+		0 forward cache miss
+		0 packet dropped due to no bufs for control data
+	1363356 packets sent from this host
+		0 packet sent with fabricated ip header
+		0 output packet dropped due to no bufs, etc.
+		2054 output packets discarded due to no route
+		0 output datagram fragmented
+		0 fragment created
+		0 datagram that can't be fragmented
+		0 packet that violated scope rules
+	Input histogram:
+		hop by hop: 10168
+		TCP: 1900890
+		UDP: 856539
+		fragment: 133
+		ICMP6: 44259
+		PIM: 7958
+	Mbuf statistics:
+		47040 one mbuf
+		two or more mbuf:
+			lo0= 10508
+		2762401 one ext mbuf
+		0 two or more ext mbuf
+		0 failure of source address selection
+		source addresses on an outgoing I/F
+			0 addresses scope=0
+			0 node-local
+			0 link-local
+			0 addresses scope=3
+			0 addresses scope=4
+			0 site-local
+			0 addresses scope=6
+			0 addresses scope=7
+			0 addresses scope=8
+			0 addresses scope=9
+			0 addresses scope=a
+			0 addresses scope=b
+			0 addresses scope=c
+			0 addresses scope=d
+			0 global
+			0 addresses scope=f
+		source addresses on a non-outgoing I/F
+			0 addresses scope=0
+			0 node-local
+			0 link-local
+			0 addresses scope=3
+			0 addresses scope=4
+			0 site-local
+			0 addresses scope=6
+			0 addresses scope=7
+			0 addresses scope=8
+			0 addresses scope=9
+			0 addresses scope=a
+			0 addresses scope=b
+			0 addresses scope=c
+			0 addresses scope=d
+			0 global
+			0 addresses scope=f
+		source addresses of same scope
+			0 addresses scope=0
+			0 node-local
+			0 link-local
+			0 addresses scope=3
+			0 addresses scope=4
+			0 site-local
+			0 addresses scope=6
+			0 addresses scope=7
+			0 addresses scope=8
+			0 addresses scope=9
+			0 addresses scope=a
+			0 addresses scope=b
+			0 addresses scope=c
+			0 addresses scope=d
+			0 global
+			0 addresses scope=f
+		source addresses of a different scope
+			0 addresses scope=0
+			0 node-local
+			0 link-local
+			0 addresses scope=3
+			0 addresses scope=4
+			0 site-local
+			0 addresses scope=6
+			0 addresses scope=7
+			0 addresses scope=8
+			0 addresses scope=9
+			0 addresses scope=a
+			0 addresses scope=b
+			0 addresses scope=c
+			0 addresses scope=d
+			0 global
+			0 addresses scope=f
+		deprecated source addresses
+			0 addresses scope=0
+			0 node-local
+			0 link-local
+			0 addresses scope=3
+			0 addresses scope=4
+			0 site-local
+			0 addresses scope=6
+			0 addresses scope=7
+			0 addresses scope=8
+			0 addresses scope=9
+			0 addresses scope=a
+			0 addresses scope=b
+			0 addresses scope=c
+			0 addresses scope=d
+			0 global
+			0 addresses scope=f
+		source addresse selection
+			20346 rules default
+			0 rule prefer same address
+			27585 rules prefer appropriate scope
+			0 rule avoid deprecated addresses
+			0 rule prefer home addresses
+			6 rules prefer outgoing interface
+			0 rule prefer addresses in a prefix advertised by the next-hop
+			19 rules prefer matching label
+			0 rule prefer temporary addresses
+			0 rule prefer addresses on alive interfaces
+			0 rule use longest matching prefix
+		0 duplicate address detection collision
+		0 times ignored source on secondary expensive I/F
+icmp6:
+	53 calls to icmp_error
+	0 error not generated because old message was icmp error or so
+	0 error not generated because rate limitation
+	Output histogram:
+		unreach: 52
+		MLDv1 listener report: 11
+		router solicitation: 192
+		neighbor solicitation: 7368
+		neighbor advertisement: 1980
+		MLDv2 listener report: 3616
+	0 message with bad code fields
+	0 message < minimum length
+	0 bad checksum
+	0 message with bad length
+	Input histogram:
+		unreach: 51
+		multicast listener query: 5469
+		router advertisement: 35154
+		neighbor solicitation: 1980
+		neighbor advertisement: 6981
+	Histogram of error messages to be generated:
+		0 no route
+		0 administratively prohibited
+		0 beyond scope
+		52 address unreachable
+		0 port unreachable
+		0 packet too big
+		0 time exceed transit
+		1 time exceed reassembly
+		0 erroneous header field
+		0 unrecognized next header
+		0 unrecognized option
+		0 redirect
+		0 unknown
+	0 message response generated
+	0 message with too many ND options
+	0 message with bad ND options
+	0 bad neighbor solicitation message
+	6967 bad neighbor advertisement messages
+	0 bad router solicitation message
+	0 bad router advertisement message
+	0 bad redirect message
+	0 path MTU change
+ipsec6:
+	0 inbound packet processed successfully
+	0 inbound packet violated process security policy
+	0 inbound packet with no SA available
+	0 invalid inbound packet
+	0 inbound packet failed due to insufficient memory
+	0 inbound packet failed getting SPI
+	0 inbound packet failed on AH replay check
+	0 inbound packet failed on ESP replay check
+	0 inbound packet considered authentic
+	0 inbound packet failed on authentication
+	0 outbound packet processed successfully
+	0 outbound packet violated process security policy
+	0 outbound packet with no SA available
+	0 invalid outbound packet
+	0 outbound packet failed due to insufficient memory
+	0 outbound packet with no route
+rip6:
+	0 message received
+	0 checksum calcuration on inbound
+	0 message with bad checksum
+	0 message dropped due to no socket
+	0 multicast message dropped due to no socket
+	0 message dropped due to full socket buffers
+	0 delivered
+	0 datagram output
+pfkey:
+	2 requests sent to userland
+	32 bytes sent to userland
+	histogram by message type:
+		register: 2
+	0 message with invalid length field
+	0 message with invalid version field
+	0 message with invalid message type field
+	0 message too short
+	0 message with memory allocation failure
+	0 message with duplicate extension
+	0 message with invalid extension type
+	0 message with invalid sa type
+	0 message with invalid address extension
+	2 requests sent from userland
+	256 bytes sent from userland
+	histogram by message type:
+		register: 2
+	0 message toward single socket
+	0 message toward all sockets
+	0 message toward registered sockets
+	0 message with memory allocation failure
+kevt:
+	23 current kernel control sockets
+	367705 kernel control generation count
+	0 bad vendor failure
+	24852 message too big failures
+	0 out of memory failure
+	0 message dropped due to full socket buffers
+	3907073 messages posted
+kctl:
+	0 total kernel control module registered
+	16 current kernel control modules registered
+	39 current kernel control sockets
+	387505 kernel control generation count
+	193764 connection attempts
+	0 connection failure
+	11 send failures
+	0 send list failure
+	2919 enqueue failures
+	2919 packets dropped due to full socket buffers
+xbkidle:
+	1 max per process
+	600 maximum time (seconds)
+	131072 high water mark
+	0 socket option not supported failure
+	0 too many sockets failure
+	0 total socket requested OK
+	0 extended bk idle socket
+	0 no cellular failure
+	0 no time failures
+	0 forced defunct socket
+	0 resumed socket
+	0 timeout expired failure
+	0 timer rescheduled
+	0 no delegated failure

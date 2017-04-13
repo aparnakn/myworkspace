@@ -1,0 +1,306 @@
+changeset:   4:7db4febc0dfb
+tag:         tip
+user:        Raymond Hettinger <python@rcn.com>
+date:        Mon Mar 27 17:13:20 2017 -0700
+summary:     Add angle to grade staticmethod to support the trucking company
+
+diff --git a/circuitous.py b/circuitous.py
+--- a/circuitous.py
++++ b/circuitous.py
+@@ -46,7 +46,7 @@
+         providing sophisticated circle analytics
+     '''
+ 
+-    version = Version(0, 4, 1)          # Class variables are SHARED by all instances
++    version = Version(0, 5, 1)          # Class variables are SHARED by all instances
+ 
+     def __init__(self, radius):
+         self.radius = radius            # Instance variables should be UNIQUE to each instance
+@@ -62,4 +62,9 @@
+     def __repr__(self):
+         return '%s(%r)' % (self.__class__.__name__, self.radius)
+ 
++    def angle_to_grade(angle):                          # Use case is adding functions to classes to solve a human factors findability problem
++        'Convert an inclinometer reading in degrees to a percent grade'
++        return math.tan(math.radians(angle)) * 100.0
+ 
++    angle_to_grade = staticmethod(angle_to_grade)       # Reprogram the dot to NOT add "self" as the first argument
++
+diff --git a/client_code.py b/client_code.py
+--- a/client_code.py
++++ b/client_code.py
+@@ -57,7 +57,7 @@
+ 
+ class MonsterTire(Tire):
+ 
+-    RUBBER_RATIO = 1.50    
++    RUBBER_RATIO = 1.50
+ 
+ t = Tire(30)
+ print 'A tire with an inner radius of', t.radius
+@@ -70,3 +70,9 @@
+ print 'has an inner area of', m.area()
+ print 'and an outer perimeter of', m.perimeter()
+ print
++
++## National Trucking Company ###############################
++
++print u'An inclinometer reading of 5\N{degree sign}',
++print 'is a %.1f%% grade.' % Circle.angle_to_grade(5)
++print
+
+changeset:   3:021d01729725
+user:        Raymond Hettinger <python@rcn.com>
+date:        Mon Mar 27 16:35:07 2017 -0700
+summary:     Fix subclassing bug in __repr__ found by Tire users
+
+diff --git a/circuitous.py b/circuitous.py
+--- a/circuitous.py
++++ b/circuitous.py
+@@ -46,7 +46,7 @@
+         providing sophisticated circle analytics
+     '''
+ 
+-    version = Version(0, 3, 1)          # Class variables are SHARED by all instances
++    version = Version(0, 4, 1)          # Class variables are SHARED by all instances
+ 
+     def __init__(self, radius):
+         self.radius = radius            # Instance variables should be UNIQUE to each instance
+@@ -60,6 +60,6 @@
+         return 2.0 * math.pi * self.radius
+ 
+     def __repr__(self):
+-        return 'Circle(%r)' % self.radius
++        return '%s(%r)' % (self.__class__.__name__, self.radius)
+ 
+ 
+diff --git a/client_code.py b/client_code.py
+--- a/client_code.py
++++ b/client_code.py
+@@ -43,3 +43,30 @@
+     print 'and a warm area of', c.area()
+     print
+ 
++## National Tire Company ##############################################
++
++class Tire(Circle):
++    'Circle analytics on a rubber tire'
++
++    RUBBER_RATIO = 1.25
++
++    def perimeter(self):
++        'Circumference corrected for the rubber on the tire'
++        return Circle.perimeter(self) * self.RUBBER_RATIO           # Extending
++        return 2.0 * math.pi * self.radius * self.RUBBER_RATIO      # Overriding
++
++class MonsterTire(Tire):
++
++    RUBBER_RATIO = 1.50    
++
++t = Tire(30)
++print 'A tire with an inner radius of', t.radius
++print 'has an inner area of', t.area()
++print 'and an outer perimeter of', t.perimeter()
++print
++
++m = MonsterTire(30)
++print 'A tire with an inner radius of', m.radius
++print 'has an inner area of', m.area()
++print 'and an outer perimeter of', m.perimeter()
++print
+
+changeset:   2:be88591d14e9
+user:        Raymond Hettinger <python@rcn.com>
+date:        Mon Mar 27 16:17:23 2017 -0700
+summary:     Add perimeter() to support the rubber sheet company
+
+diff --git a/circuitous.py b/circuitous.py
+--- a/circuitous.py
++++ b/circuitous.py
+@@ -46,7 +46,7 @@
+         providing sophisticated circle analytics
+     '''
+ 
+-    version = Version(0, 2, 1)          # Class variables are SHARED by all instances
++    version = Version(0, 3, 1)          # Class variables are SHARED by all instances
+ 
+     def __init__(self, radius):
+         self.radius = radius            # Instance variables should be UNIQUE to each instance
+@@ -55,6 +55,10 @@
+         'Perform quadrature on a planar shape of uniform revolution'
+         return math.pi * self.radius ** 2.0
+ 
++    def perimeter(self):
++        'Compute the closed line integral for the 2-D locus of points equidistant from a given point'
++        return 2.0 * math.pi * self.radius
++
+     def __repr__(self):
+         return 'Circle(%r)' % self.radius
+ 
+diff --git a/client_code.py b/client_code.py
+--- a/client_code.py
++++ b/client_code.py
+@@ -28,3 +28,18 @@
+ print 'The average area is %.1f' % average_area
+ print
+ 
++## Rubber Sheet Company ###############################################
++
++cut_template = [0.1, 0.2, 0.7]
++print 'Specification sheet for the cut template:', cut_template
++circles = [Circle(cut_radius) for cut_radius in cut_template]
++for i, c in enumerate(circles, start=1):
++    print 'Circle number #%d' % i
++    print 'A rubber circle with a cut radius of', c.radius
++    print 'has a perimeter of', c.perimeter()
++    print 'and a cold area of', c.area()
++    c.radius *= 1.1
++    # c.set_radius(c.get_radius() * 1.1)
++    print 'and a warm area of', c.area()
++    print
++
+
+changeset:   1:9d84fb3f2e11
+user:        Raymond Hettinger <python@rcn.com>
+date:        Mon Mar 27 15:57:17 2017 -0700
+summary:     Added repr to support the academic users
+
+diff --git a/circuitous.py b/circuitous.py
+--- a/circuitous.py
++++ b/circuitous.py
+@@ -46,12 +46,16 @@
+         providing sophisticated circle analytics
+     '''
+ 
+-    version = Version(0, 1, 1)          # Class variables are SHARED by all instances
++    version = Version(0, 2, 1)          # Class variables are SHARED by all instances
+ 
+     def __init__(self, radius):
+         self.radius = radius            # Instance variables should be UNIQUE to each instance
+ 
+-
+     def area(self):
+         'Perform quadrature on a planar shape of uniform revolution'
+         return math.pi * self.radius ** 2.0
++
++    def __repr__(self):
++        return 'Circle(%r)' % self.radius
++
++
+diff --git a/client_code.py b/client_code.py
+--- a/client_code.py
++++ b/client_code.py
+@@ -1,5 +1,6 @@
+ "Show-off the Circuitous code from the user's point of view"
+ 
++from __future__ import division
+ from circuitous import Circle
+ 
+ print u'Tutorial for Circuitous\N{trade mark sign}'
+@@ -8,3 +9,22 @@
+ print 'a circle with a radius of', c.radius
+ print 'has an area of', c.area()
+ print
++
++## Academia ########################################################
++
++from pprint import pprint
++from random import random, seed
++
++n = 10
++jenny = 8675309
++seed(jenny)
++print 'DARPA Grant Proposal to study the average area of random circles'
++print 'using Circuitous(tm) version %d.%d' % Circle.version[:2]
++print 'preliminary study of {n} random circles'.format(n=n)
++print "seeded using Jenny's number: {jenny}".format(jenny=jenny)
++circles = [Circle(random()) for i in xrange(n)]
++areas = [circle.area() for circle in circles]
++average_area = sum(areas) / n
++print 'The average area is %.1f' % average_area
++print
++
+
+changeset:   0:010d557c2c5b
+user:        Raymond Hettinger <python@rcn.com>
+date:        Mon Mar 27 14:26:50 2017 -0700
+summary:     MVP: Circle class with version and area and a tutorial
+
+diff --git a/circuitous.py b/circuitous.py
+new file mode 100644
+--- /dev/null
++++ b/circuitous.py
+@@ -0,0 +1,57 @@
++''' Circuitous(tm)
++
++Apply advanced circle analytics in optimized
++algorithms for cutting edge distributed circle
++management tasks to save the planet.
++'''
++
++# Project name and elevator pitch
++# Purpose of inheritance is for code re-use.  One class reuses the methods from another class.
++# Inheriting from object creates a new-style class.
++# New-style classes have a smarter __getattribute__ __setattr__ __delattr__
++# The give us a more powerful, controllable, and reprogrammable dot operator
++# Generally, dunder methods don't have a docstring because
++# 1) user's don't see the docstring -- they are using short-cuts instead
++# 2) dunder methods already have a standard meaning which usually doesn't need more explaining
++# Classes usually have uppercase letters
++# The instance variable is usually called "self"
++# The part of "self" that is misleading is that it may
++# represent an instance of a child class.
++# In general, when moving data from one namespace to another,
++# we usually keep the name the same.
++# Magic constants should given a name (usually all CAPS) and factored-out.
++# D.R.Y. -- Do not repeat yourself
++#        -- There should be a single source of truth
++#        -- All essential ideas should be expressed exactly once in the code
++# DRY violations are a code smell
++# Code smell:  Code that works and passes tests but has other maintainability/readability issues
++# Indictates a new to refactor, put out the common components
++
++# Modules exist for two reasons 1) code organization and 2) code reuse
++# Related concepts:  Loose coupling and High Cohesion
++# Dogfooding:  Be your own first user.
++# MVP:  Minimum viable product
++# Y.A.G.N.I.,R.N. -- You ain't gonna need it, right now
++# "Code is your enemy"
++
++import math
++from collections import namedtuple
++
++Version = namedtuple('Version', ['major', 'minor', 'micro'])
++
++class Circle(object):
++    ''' Construct a new circle from its radius
++
++        The circle class has specialized algorithms
++        providing sophisticated circle analytics
++    '''
++
++    version = Version(0, 1, 1)          # Class variables are SHARED by all instances
++
++    def __init__(self, radius):
++        self.radius = radius            # Instance variables should be UNIQUE to each instance
++
++
++    def area(self):
++        'Perform quadrature on a planar shape of uniform revolution'
++        return math.pi * self.radius ** 2.0
+diff --git a/client_code.py b/client_code.py
+new file mode 100644
+--- /dev/null
++++ b/client_code.py
+@@ -0,0 +1,10 @@
++"Show-off the Circuitous code from the user's point of view"
++
++from circuitous import Circle
++
++print u'Tutorial for Circuitous\N{trade mark sign}'
++print 'Circle class version %d.%d' % Circle.version[:2]
++c = Circle(10)
++print 'a circle with a radius of', c.radius
++print 'has an area of', c.area()
++print
+
